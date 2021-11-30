@@ -34,4 +34,5 @@ optional arguments:
 
 #### Examples
 Checking the GitHub home and explore pages: `python .\alt_text_spellchecker.py output.txt https://github.com/ https://github.com/explore`
+
 Ignoring empty alt text: `python .\alt_text_spellchecker.py --ignore_empty output.txt https://github.com/ https://github.com/explore`
