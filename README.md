@@ -29,7 +29,7 @@ If there is a potential typo you want `alt_text_spellchecker.py` to ignore, you 
 ```
 usage: alt_text_spellchecker.py [-h] [--ignore_empty] [--output OUTPUT] [--dict DICT] links [links ...]
 
-Find suspected typos in alt text.
+Find potential typos in alt text.
 
 positional arguments:
   links            links to check alt text on

@@ -16,7 +16,7 @@ spell = SpellChecker(distance=1)
 
 # Function declarations
 def check_text(text : str) -> str:
-    """Check text for suspected typos; if typos are found, return string listing them.
+    """Check text for potential typos; if typos are found, return string listing them.
     @param str text: Text to check for typos
     @return: List of typos and text, or empty string"""
     # Regular expression to remove all punctuation except for apostrophes and dashes
@@ -66,7 +66,7 @@ def generate_list(file_name : str, links : list, ignore_empty : bool):
 
 def argparsing():
     """Parse command line arguments."""
-    parser = argparse.ArgumentParser(description='Find suspected typos in alt text.')
+    parser = argparse.ArgumentParser(description='Find potential typos in alt text.')
     parser.add_argument('links', type=str, nargs='+',
                         help='links to check alt text on')
     parser.add_argument('--ignore_empty', dest='ignore_empty', action='store_const',
