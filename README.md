@@ -1,6 +1,6 @@
 # Accessibility Alt Check
 
-While typos in alt text go unnoticed to sighted individuals, they create a jarring, unpleasant experience to screen reader users. Given one or more URLs, the spellchecker will find potential typos in images' alternative text.
+While typos in alt text go unnoticed to sighted individuals, they create a jarring, unpleasant experience for screen reader users. Given one or more URLs, the spellchecker will find potential typos in images' alternative text.
 
 ## Install
 
