@@ -1,4 +1,7 @@
 #!/usr/bin/python
+"""
+Given an output file name and a list of links, check image alt text for potential typos.
+"""
 
 # Imports
 import sys
@@ -14,65 +17,69 @@ special_known_words = ['github', 'bellingham']
 spell.word_frequency.load_words(special_known_words)
 
 # Function declarations
-
-# Check text for suspected typos; if typos are found, return list of them
-def check_text(string):
+def check_text(text : str) -> str:
+    """Check text for suspected typos; if typos are found, return string listing them.
+    @param str text: Text to check for typos
+    @return: List of typos and text, or empty string"""
     # Regular expression to remove all punctuation except for apostrophes and dashes
-    arr = re.sub("[^\w\d'\-\s]+",'',string).split()
+    arr = re.sub("[^\w\d'\-\s]+",'',text).split()
     # Check for misspellings
     misspelled = list(spell.unknown(arr))
-    # If we have at least 1 misspelled word, format string to return list of typos
-    write = ""
+    # If we have at least 1 misspelled word, format text list of typos
+    ret = ""
     if len(misspelled) > 0:
         for i in range(0,len(misspelled)):
-            write += "\"" + str(misspelled[i]) + "\""
+            ret += "\"" + str(misspelled[i]) + "\""
             if i+1 < len(misspelled):
-                write += ", "
-        return write + " (" + str(len(misspelled)) + " total): \"" + string + "\""
+                ret += ", "
+        ret += " (" + str(len(misspelled)) + " total): \"" + text + "\""
+    return ret
 
-# Generate file with list of alt text of suspected typos for each link
-def generate_list(file_name, links, ignore_empty):
+def generate_list(file_name : str, links : list, ignore_empty : bool):
+    """Generate file with each link and their potential alt text typos.
+    @param str file_name: Name of file.
+    @param list links: List of links to check.
+    @param bool ignore_empty: Flag to ignore empty alt text."""
     # Open the file
-    f = open(file_name, "w")
-    for link in links:
-        # Try to load the page
-        try:
-            page = urllib.request.urlopen(link)
-        except Exception as e:
-            print("Error occurred. Page could not be found at " + link)
-            f.write("Error occurred. Page could not be found at " + link)
-            continue
-        # Get the page and write the title and link to the file
-        soup = BeautifulSoup(page, features="lxml")
-        f.write(soup.find('title').getText() + " " + link + "\n")
-        # For each img element, get the src and alt attributes
-        for img in soup.findAll('img'):
-            src = img.get('src')
-            alt = img.get('alt')
-            # If there is alt text, check for typos and potentially write to file
-            if alt:
-                result = check_text(alt)
-                if result and len(result) > 0:
-                    f.write("\t" + result + "\n")
-                # If there is empty alt text, note this issue in the file
-                elif ignore_empty:
-                    f.write("\t" + "Empty alt text! Image source link: " + src + "\n")
-    f.close()
+    with open(file_name, 'w') as file:
+        for link in links:
+            # Try to load the page
+            try:
+                page = urllib.request.urlopen(link)
+            except Exception as e:
+                print("Error occurred. Page could not be found at " + link)
+                file.write("Error occurred. Page could not be found at " + link)
+                continue
+            # Get the page and write the title and link to the file
+            soup = BeautifulSoup(page, features="lxml")
+            file.write(soup.find('title').getText() + " " + link + "\n")
+            # For each img element, get the src and alt attributes
+            for img in soup.findAll('img'):
+                src = img.get('src')
+                alt = img.get('alt')
+                # If there is alt text, check for typos and potentially write to file
+                if alt:
+                    result = check_text(alt)
+                    if len(result) > 0:
+                        file.write("\t" + result + "\n")
+                    # If there is empty alt text, note this issue in the file
+                    elif not ignore_empty:
+                        file.write("\t" + "Empty alt text! Image source link: " + src + "\n")
 
-# Parse arguments
 def argparsing():
+    """Parse command line arguments."""
     parser = argparse.ArgumentParser(description='Find suspected typos in alt text.')
     parser.add_argument('file_name', type=str, nargs=1,
                         help='file to store output in')
     parser.add_argument('links', type=str, nargs='+',
                         help='links to check alt text on')
     parser.add_argument('--ignore_empty', dest='ignore_empty', action='store_const',
-                        const=0, default=1,
+                        const=1, default=0,
                         help='ignore empty alt text; do not record it in output file')
     return parser.parse_args()
 
-# Main
 def main(argv):
+    """Parse args and generate list."""
     args = argparsing()
     # Generate list
     generate_list(args.file_name[0], args.links, bool(args.ignore_empty))
