@@ -1,4 +1,4 @@
-# Alt Text Spellchecker
+# Accessibility Alt Check
 
 While typos in alt text go unnoticed to sighted individuals, they create a jarring, unpleasant experience to screen reader users. Given one or more URLs, this alt text spellchecker will find potential typos in images' alternative text.
 
