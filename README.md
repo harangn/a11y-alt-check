@@ -18,7 +18,7 @@ When outputting to a text file, tabs are used to indent the typo list beneath th
 If there is a potential typo you want `alt_text_spellchecker.py` to ignore, you can add it to the list stored in `special_known_words`.
 
 ### Usage
-```
+```python
 usage: alt_text_spellchecker.py [-h] [--ignore_empty] file_name links [links ...]
 
 Find suspected typos in alt text.
@@ -35,10 +35,10 @@ optional arguments:
 #### Examples
 Checking the GitHub home and explore pages:
 ```
-python .\alt_text_spellchecker.py output.txt https://github.com/ https://github.com/explore
+python ./alt_text_spellchecker.py output.txt https://github.com/ https://github.com/explore
 ```
 
 Ignoring empty alt text:
 ```
-python .\alt_text_spellchecker.py --ignore_empty output.txt https://github.com/ https://github.com/explore
+python ./alt_text_spellchecker.py --ignore_empty output.txt https://github.com/ https://github.com/explore
 ```
