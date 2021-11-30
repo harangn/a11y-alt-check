@@ -16,7 +16,7 @@ Given a file name and one or more links, `alt_text_spellchecker.py` creates the 
 
 ### Accessibility
 
-When outputting to a text file, tabs are used to indent the typo list beneath the page title and URL. This means that the output can be copied from the text file into a word document, selected, and formatted as a list and the indentation levels will be preserved.
+When outputting to a text file, tabs are used to indent the typo list beneath the page title and URL. The output can be copied from the text file into a word document, selected, and formatted as a list and the indentation levels will be preserved.
 
 [Resources on Alternative Text for Images (W3C)](https://www.w3.org/WAI/alt/)
 
