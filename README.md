@@ -1,5 +1,5 @@
 # Alt Text Spellchecker
-While typos in alt text go unnoticed to sighted individuals, they create a jarring, unpleasant experience to screen reader users. This alt text spellchecker will test Given one or more URLs, find potential typos in images' alternative text.
+While typos in alt text go unnoticed to sighted individuals, they create a jarring, unpleasant experience to screen reader users. Given one or more URLs, this alt text spellchecker will find potential typos in images' alternative text.
 
 ## Install
 This project requires Python3, beautifulsoup4, and pyspellchecker.
