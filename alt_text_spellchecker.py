@@ -59,9 +59,8 @@ def generate_list(file_name, links, ignore_empty):
                     f.write("\t" + "Empty alt text! Image source link: " + src + "\n")
     f.close()
 
-# Main body
-if __name__ == '__main__':
-    # Parse arguments
+# Parse arguments
+def argparsing():
     parser = argparse.ArgumentParser(description='Find suspected typos in alt text.')
     parser.add_argument('file_name', type=str, nargs=1,
                         help='file to store output in')
@@ -70,7 +69,13 @@ if __name__ == '__main__':
     parser.add_argument('--ignore_empty', dest='ignore_empty', action='store_const',
                         const=0, default=1,
                         help='ignore empty alt text; do not record it in output file')
-    args = parser.parse_args()
+    return parser.parse_args()
 
+# Main
+def main(argv):
+    args = argparsing()
     # Generate list
     generate_list(args.file_name[0], args.links, bool(args.ignore_empty))
+
+if __name__ == '__main__':
+    main(sys.argv)
