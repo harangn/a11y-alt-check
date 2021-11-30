@@ -13,8 +13,6 @@ import re
 
 # Global variables
 spell = SpellChecker(distance=1)
-special_known_words = ['github', 'bellingham']
-spell.word_frequency.load_words(special_known_words)
 
 # Function declarations
 def check_text(text : str) -> str:
@@ -37,7 +35,7 @@ def check_text(text : str) -> str:
 
 def generate_list(file_name : str, links : list, ignore_empty : bool):
     """Generate file with each link and their potential alt text typos.
-    @param str file_name: Name of file.
+    @param str file_name: Name of output file.
     @param list links: List of links to check.
     @param bool ignore_empty: Flag to ignore empty alt text."""
     # Open the file
@@ -69,20 +67,28 @@ def generate_list(file_name : str, links : list, ignore_empty : bool):
 def argparsing():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(description='Find suspected typos in alt text.')
-    parser.add_argument('file_name', type=str, nargs=1,
-                        help='file to store output in')
     parser.add_argument('links', type=str, nargs='+',
                         help='links to check alt text on')
     parser.add_argument('--ignore_empty', dest='ignore_empty', action='store_const',
                         const=1, default=0,
                         help='ignore empty alt text; do not record it in output file')
+    parser.add_argument("--output", type=str, default="output.txt",
+                        help="file to store output in; default output.txt")
+    parser.add_argument("--dict", type=str, default=None,
+                        help="dictionary file of typos to ignore")
     return parser.parse_args()
 
+def add_known_words(file_name : str):
+    """Add known words to spell checker
+    @param str file_name: Name of dict file of special known words. File should have 1 word per line."""
+    with open(file_name, 'r') as file:
+        spell.word_frequency.load_words(file.read().splitlines())
+
 def main(argv):
-    """Parse args and generate list."""
+    """Parse args and generate output file."""
     args = argparsing()
-    # Generate list
-    generate_list(args.file_name[0], args.links, bool(args.ignore_empty))
+    add_known_words(args.dict)
+    generate_list(args.output, args.links, bool(args.ignore_empty))
 
 if __name__ == '__main__':
     main(sys.argv)
