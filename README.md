@@ -22,32 +22,37 @@ When outputting to a text file, tabs are used to indent the typo list beneath th
 
 ### Known Words
 
-If there is a potential typo you want `alt_text_spellchecker.py` to ignore, you can add it to the list stored in `special_known_words`.
+If there is a potential typo you want `alt_text_spellchecker.py` to ignore, you can create a custom dictionary file with 1 word per line and reference it with the dict flag (see [Usage](#usage) below).
 
 ### Usage
 
 ```
-usage: alt_text_spellchecker.py [-h] [--ignore_empty] file_name links [links ...]
+usage: alt_text_spellchecker.py [-h] [--ignore_empty] [--output OUTPUT] [--dict DICT] links [links ...]
 
 Find suspected typos in alt text.
 
 positional arguments:
-  file_name       file to store output in
-  links           links to check alt text on
+  links            links to check alt text on
 
 optional arguments:
-  -h, --help      show this help message and exit
-  --ignore_empty  ignore empty alt text; do not record it in output file
+  -h, --help       show this help message and exit
+  --ignore_empty   ignore empty alt text; do not record it in output file
+  --output OUTPUT  file to store output in; default output.txt
+  --dict DICT      dictionary file of typos to ignore
 ```
 
-#### Examples
+### Example
 
 Checking the GitHub home and explore pages:
 ```
-python ./alt_text_spellchecker.py output.txt https://github.com/ https://github.com/explore
+python ./alt_text_spellchecker.py https://github.com/ https://github.com/explore
 ```
-
-Ignoring empty alt text:
+Checking the Github home and explore pages, saving to a custom output file github.txt, and adding a dict.txt (shown below) to add "github" and "changelog" as correct words:
 ```
-python ./alt_text_spellchecker.py --ignore_empty output.txt https://github.com/ https://github.com/explore
+python ./alt_text_spellchecker.py --output github.txt --dict dict.txt --ignore_empty https://github.com/ https://github.com/explore
+```
+*Content of `dict.txt`:*
+```
+github
+changelog
 ```
