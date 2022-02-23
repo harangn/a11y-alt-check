@@ -8,7 +8,7 @@ import sys
 import argparse
 from spellchecker import SpellChecker
 from bs4 import BeautifulSoup
-import urllib
+import urllib.request
 import re
 
 # Global variables
@@ -45,8 +45,8 @@ def generate_list(file_name : str, links : list, ignore_empty : bool):
             try:
                 page = urllib.request.urlopen(link)
             except Exception as e:
-                print("Error occurred. Page could not be found at " + link)
-                file.write("Error occurred. Page could not be found at " + link)
+                print("Error occurred. Page could not be found at " + link + "\n" + e + "\n")
+                file.write("Error occurred. Page could not be found at " + link + "\n" + e + "\n")
                 continue
             # Get the page and write the title and link to the file
             soup = BeautifulSoup(page, features="lxml")
@@ -81,8 +81,9 @@ def argparsing():
 def add_known_words(file_name : str):
     """Add known words to spell checker
     @param str file_name: Name of dict file of special known words. File should have 1 word per line."""
-    with open(file_name, 'r') as file:
-        spell.word_frequency.load_words(file.read().splitlines())
+    if (file_name):
+        with open(file_name, 'r') as file:
+            spell.word_frequency.load_words(file.read().splitlines())
 
 def main(argv):
     """Parse args and generate output file."""
