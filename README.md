@@ -4,10 +4,11 @@ While typos in alt text go unnoticed to sighted individuals, they create a jarri
 
 ## Install
 
-This project requires Python3, beautifulsoup4, and pyspellchecker.
+This project requires Python3, beautifulsoup4, pyspellchecker, and lxml.
 ```
 pip install beautifulsoup4
 pip install pyspellchecker
+pip install lxml
 ```
 
 ## Use
