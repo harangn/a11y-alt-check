@@ -52,7 +52,7 @@ Checking the Github home and explore pages, saving to a custom output file githu
 ```
 python ./alt_text_spellchecker.py --output github.txt --dict dict.txt --ignore_empty https://github.com/ https://github.com/explore
 ```
-####*Content of `dict.txt`:*
+#### Content of `dict.txt`:
 ```
 github
 changelog
