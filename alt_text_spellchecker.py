@@ -60,9 +60,9 @@ def generate_list(file_name : str, links : list, ignore_empty : bool):
                     result = check_text(alt)
                     if len(result) > 0:
                         file.write("\t" + result + "\n")
-                    # If there is empty alt text, note this issue in the file
-                    elif not ignore_empty:
-                        file.write("\t" + "Empty alt text! Image source link: " + src + "\n")
+                # If there is empty or missing alt text, note this issue in the file
+                if (alt == "" or (alt is None)) and not ignore_empty:
+                    file.write("\t" + "Empty or missing alt text!\n\t\tImage source link: " + src + "\n\t\tImage tag: " + str(img) + "\n")
 
 def argparsing():
     """Parse command line arguments."""

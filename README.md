@@ -22,8 +22,8 @@ Given a file name and one or more links, `alt_text_spellchecker.py` creates the 
 When outputting to a text file, tabs are used to indent each typo listed after its page title and URL. This output can be made into an ordered or unordered list in a Word document by:
 1. Copy the output from the text file into a Word document.
 2. Select all content (`ctrl+a`).
-3. Manually format as a list. It can be unordered (`alt h u enter`) or ordered (`alt h n enter`).
-Word preserves the indentation levels, resulting in a useful formatted list. The top-level list items will be the link title and URL. Each alt text issue will be a nested list item.
+3. Manually format as a list. It can be unordered (`alt h u` then select type) or ordered (`alt h n` then select type).
+Word preserves the indentation levels, resulting in a useful formatted list. The top-level list items will be the link title and URL. Each alt text issue will be a nested list item. If there is empty or missing alt text, the issue itself will have two nested list items, the src attribute value and the whole img tag.
 
 ### Known Words
 
