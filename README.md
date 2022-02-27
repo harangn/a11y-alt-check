@@ -58,7 +58,7 @@ Checking the GitHub home and explore pages:
 ```
 python ./alt_text_spellchecker.py https://github.com/ https://github.com/explore
 ```
-Checking the Github home and explore pages, saving to a custom output file `github.txt`, and adding a dictionary file `dict.txt` (shown below) to add "github" and "changelog" as correct words:
+Checking the Github home and explore pages, saving to a custom output file `github.txt`, and adding a dictionary file `dict.txt` (see [Content of `dict.txt`](#content-of-dicttxt) below) to add "github" and "changelog" as correct words:
 ```
 python ./alt_text_spellchecker.py --output github.txt --dict dict.txt --ignore_empty https://github.com/ https://github.com/explore
 ```
