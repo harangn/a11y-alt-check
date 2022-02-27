@@ -27,7 +27,7 @@ When outputting to a text file, tabs are used to indent each typo listed after i
 #### Output List Organization
 
 Word preserves the indentation levels, resulting in a useful formatted list with the following characteristics:
-* Top-level list items: Link title and URL.
+* Top-level list item: Link title and URL.
 * Nested list item: Alt text issue.
 * Sub-nested list item: `src` attribute value and `img` tag of element with empty or missing alt text.
 
