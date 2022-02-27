@@ -2,6 +2,8 @@
 
 While typos in alt text go unnoticed to sighted individuals, they create a jarring, unpleasant experience for screen reader users. Given one or more URLs, the spellchecker will find potential typos in images' alternative text.
 
+[Resources on Alternative Text for Images (W3C)](https://www.w3.org/WAI/alt/)
+
 ## Install
 
 This project requires Python3, beautifulsoup4, pyspellchecker, and lxml.
@@ -15,11 +17,13 @@ pip install lxml
 
 Given a file name and one or more links, `alt_text_spellchecker.py` creates the file and lists the potential typos their respective alt texts. The file name must have the extension included. The recommended file type is a text file (\*.txt).
 
-### Accessibility
+### Output
 
-When outputting to a text file, tabs are used to indent the typo list beneath the page title and URL. The output can be copied from the text file into a word document, selected, and formatted as a list and the indentation levels will be preserved.
-
-[Resources on Alternative Text for Images (W3C)](https://www.w3.org/WAI/alt/)
+When outputting to a text file, tabs are used to indent each typo listed after its page title and URL. This output can be made into an ordered or unordered list in a Word document by:
+1. Copy the output from the text file into a Word document.
+2. Select all content (`ctrl+a`).
+3. Manually format as a list. It can be unordered (`alt h u enter`) or ordered (`alt h n enter`).
+Word preserves the indentation levels, resulting in a useful formatted list. The top-level list items will be the link title and URL. Each alt text issue will be a nested list item.
 
 ### Known Words
 
