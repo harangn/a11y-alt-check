@@ -23,7 +23,13 @@ When outputting to a text file, tabs are used to indent each typo listed after i
 1. Copy the output from the text file into a Word document.
 2. Select all content (`ctrl+a`).
 3. Manually format as a list. It can be unordered (`alt h u` then select type) or ordered (`alt h n` then select type).
-Word preserves the indentation levels, resulting in a useful formatted list. The top-level list items will be the link title and URL. Each alt text issue will be a nested list item. If there is empty or missing alt text, the issue itself will have two nested list items, the src attribute value and the whole img tag.
+
+#### Output List Organization
+
+Word preserves the indentation levels, resulting in a useful formatted list with the following characteristics:
+* Top-level list items: Link title and URL.
+* Nested list item: Alt text issue.
+* Sub-nested list item: `src` attribute value and `img` tag of element with empty or missing alt text.
 
 ### Known Words
 
