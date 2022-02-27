@@ -15,7 +15,7 @@ pip install lxml
 
 ## Use
 
-Given a file name and one or more links, `alt_text_spellchecker.py` creates the file and lists the potential typos their respective alt texts. The file name must have the extension included. The recommended file type is a text file (\*.txt).
+Given a file name and one or more links, `alt_text_spellchecker.py` creates the file and lists the potential typos their respective alt texts. The file name must have the extension included. The recommended file type is a text file (`*.txt`).
 
 ### Output
 
@@ -58,7 +58,7 @@ Checking the GitHub home and explore pages:
 ```
 python ./alt_text_spellchecker.py https://github.com/ https://github.com/explore
 ```
-Checking the Github home and explore pages, saving to a custom output file github.txt, and adding a dict.txt (shown below) to add "github" and "changelog" as correct words:
+Checking the Github home and explore pages, saving to a custom output file `github.txt`, and adding a dictionary file `dict.txt` (shown below) to add "github" and "changelog" as correct words:
 ```
 python ./alt_text_spellchecker.py --output github.txt --dict dict.txt --ignore_empty https://github.com/ https://github.com/explore
 ```
