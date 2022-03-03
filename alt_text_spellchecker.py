@@ -29,9 +29,11 @@ def add_title(file: '_io.TextIOWrapper', ext: str, title: str, link: str) -> Non
     @param str title: URL title.
     @param str link: URL link.
     @return: Nothing."""
-    title_text = title + " " + link
+    title_text = title + " "
     if is_html(ext):
-        title_text = "<h1>" + title_text + "</h1>"
+        title_text = "<h1>" + title_text + "<a href=\"" + link + "\">" + link + "</a></h1>"
+    else:
+        title_text += link
     title_text += "\n"
     file.write(title_text)
 
@@ -58,7 +60,7 @@ def add_empty_missing_result(file: '_io.TextIOWrapper', ext: str, src: str, img:
     @return: Nothing."""
     result_text = ""
     if is_html(ext):
-        result_text = "<h2>Empty or missing alt text!</h2>\n<h3>Image source link: " + src + "</h3>\n<code>" + str(img).replace("<", "&lt;").replace(">", "&gt;") + "</code>\n"
+        result_text = "<h2>Empty or missing alt text!</h2>\n<h3>Image source link: <code>" + src + "</code></h3>\n<code>" + str(img).replace("<", "&lt;").replace(">", "&gt;") + "</code>\n"
     else:
         result_text = "\t" + "Empty or missing alt text!\n\t\tImage source link: " + src + "\n\t\tImage tag: " + str(img) + "\n"
     file.write(result_text)
