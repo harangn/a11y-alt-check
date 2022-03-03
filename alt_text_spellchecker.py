@@ -16,18 +16,38 @@ import os
 spell = SpellChecker(distance=1)
 
 # Function declarations
+def is_html(ext: str) -> bool:
+    """Check if file extension is html (.html or .htm).
+    @param str ext: File extension.
+    @return: True if html, false otherwise."""
+    return (ext == ".html") or (ext == ".htm")
+
 def add_title(file: '_io.TextIOWrapper', ext: str, title: str, link: str) -> None:
-    """Add title and link of URL to the document. Formatting differs depending on file type.
+    """Add title and link of URL to the document. Format depends on file ext.
     @param File file: File to add to.
     @param str ext: File extension (.txt, .html, .htm).
     @param str title: URL title.
     @param str link: URL link.
     @return: Nothing."""
     title_text = title + " " + link
-    if (ext == ".html" or ext == ".htm"):
+    if is_html(ext):
         title_text = "<h1>" + title_text + "</h1>"
     title_text += "\n"
     file.write(title_text)
+
+def add_typo_result(file: '_io.TextIOWrapper', ext: str, result: str) -> None:
+    """Add a typo result to the document. Format depends on file ext.
+    @param File file: File to add to.
+    @param str ext: File extension (.txt, .html, .htm).
+    @param str result: Result of typos.
+    @return: Nothing."""
+    result_text = ""
+    if is_html(ext):
+        result_text = "<h2>" + result + "</h2>"
+    else:
+        result_text = "\t" + result
+    result_text += "\n"
+    file.write(result_text)
 
 def check_text(text : str) -> str:
     """Check text for potential typos; if typos are found, return string listing them.
@@ -74,7 +94,7 @@ def generate_list(file_name : str, ext: str, links : list, ignore_empty : bool):
                 if alt:
                     result = check_text(alt)
                     if len(result) > 0:
-                        file.write("\t" + result + "\n")
+                        add_typo_result(file, ext, result)
                 # If there is empty or missing alt text, note this issue in the file
                 if (alt == "" or (alt is None)) and not ignore_empty:
                     file.write("\t" + "Empty or missing alt text!\n\t\tImage source link: " + src + "\n\t\tImage tag: " + str(img) + "\n")
