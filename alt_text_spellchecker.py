@@ -25,7 +25,7 @@ def is_html(ext: str) -> bool:
 def add_title(file: '_io.TextIOWrapper', ext: str, title: str, link: str) -> None:
     """Add title and link of URL to the document. Format depends on file ext.
     @param File file: File to add to.
-    @param str ext: File extension (.txt, .html, .htm).
+    @param str ext: File extension.
     @param str title: URL title.
     @param str link: URL link.
     @return: Nothing."""
@@ -37,24 +37,25 @@ def add_title(file: '_io.TextIOWrapper', ext: str, title: str, link: str) -> Non
     title_text += "\n"
     file.write(title_text)
 
-def add_typo_result(file: '_io.TextIOWrapper', ext: str, result: str) -> None:
+def add_typo_result(file: '_io.TextIOWrapper', ext: str, result: str, alt: str) -> None:
     """Add typo information to the document. Format depends on file ext.
     @param File file: File to add to.
-    @param str ext: File extension (.txt, .html, .htm).
+    @param str ext: File extension.
     @param str result: Result of typos.
+    @param str alt: Alt text containing typos.
     @return: Nothing."""
     result_text = ""
     if is_html(ext):
-        result_text = "<h2>" + result + "</h2>"
+        result_text = "<h2>" + result + "</h2>\n<p>" + alt + "</p>"
     else:
-        result_text = "\t" + result
+        result_text = "\t" + result + ": " + alt
     result_text += "\n"
     file.write(result_text)
 
 def add_empty_missing_result(file: '_io.TextIOWrapper', ext: str, src: str, img: str) -> None:
     """Add information on empty or missing alt text to the document. Format depends on file ext.
     @param File file: File to add to.
-    @param str ext: File extension (.txt, .html, .htm).
+    @param str ext: File extension.
     @param str src: Value of img source attribute.
     @param str img: Img tag as plain text.
     @return: Nothing."""
@@ -80,7 +81,7 @@ def check_text(text : str) -> str:
             ret += "\"" + str(misspelled[i]) + "\""
             if i+1 < len(misspelled):
                 ret += ", "
-        ret += " (" + str(len(misspelled)) + " total): \"" + text + "\""
+        ret += " (" + str(len(misspelled)) + " total)"
     return ret
 
 def generate_list(file_name : str, ext: str, links : list, ignore_empty : bool):
@@ -110,7 +111,7 @@ def generate_list(file_name : str, ext: str, links : list, ignore_empty : bool):
                 if alt:
                     result = check_text(alt)
                     if len(result) > 0:
-                        add_typo_result(file, ext, result)
+                        add_typo_result(file, ext, result, alt)
                 # If there is empty or missing alt text, note this issue in the file
                 if (alt == "" or (alt is None)) and not ignore_empty:
                     add_empty_missing_result(file, ext, src, str(img))

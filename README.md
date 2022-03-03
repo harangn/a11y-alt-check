@@ -29,7 +29,7 @@ When outputting to an HTML file, heading structure is used to organize each page
 
 The heading levels correspond to the following:
 1. Page title and URL. The URL is an active link to the page.
-2. Result of typo in alt text or missing/empty alt text.
+2. Alt text issue (typos or empty/missing). Plain text under this heading contains the full alt text.
 3. Image source attribute value. Plain text under this heading contains the full text of the img tag.
 
 #### Text File Output

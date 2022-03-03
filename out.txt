@@ -1,0 +1,14 @@
+Western Washington University https://www.wwu.edu
+	"bellingham", "sehome" (2 total): Aerial view of campus nestled against Sehome Hill Arboretum. You can see the mountains, bay, and islands surrounding Bellingham.
+	"noosack", "lummi" (2 total): A pair of folks walks on the exposed mudflats of the Noosack Delta; behind them on the horizon is Lummi Island.
+	Empty or missing alt text!
+		Image source link: data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 600 400'%2F%3E
+		Image tag: <img alt="" class="media__image media__element b-lazy" data-src="/files/styles/card/public/2022-03/gerry.png?itok=-Dg6HRky" height="400" loading="lazy" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 600 400'%2F%3E" typeof="foaf:Image" width="600"/>
+	"ipsi", "gosen" (2 total): IPSI and Western students work together in the field while reporting in Tunisia during September 2019. // Photo by Joe Gosen
+	"labay" (1 total): Andy Labay smiles in front of Pride Flag
+	"swartos" (1 total): Hannah Swartos smiles at the camera; behind her is a hallway.
+	Empty or missing alt text!
+		Image source link: data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 600 400'%2F%3E
+		Image tag: <img alt="" class="media__image media__element b-lazy" data-src="/files/styles/card/public/2022-03/Piper%252520Wolters.jpg?itok=pzSDtDkH" height="400" loading="lazy" src="data:image/svg+xml;charset=utf-8,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' viewBox%3D'0 0 600 400'%2F%3E" typeof="foaf:Image" width="600"/>
+	"zavala", "montalvo", "azucena" (3 total): Azucena Zavala Montalvo wears her Presidential Scholar medal outside in front of a patch of purple iris.
+	"21-22" (1 total): Military Friendly School 21-22 badge
