@@ -19,12 +19,27 @@ Given a file name and one or more links, `alt_text_spellchecker.py` creates the 
 
 ### Output
 
+The two supported output file types for output are HTML files (`*.html` and `*.htm`) and text files (`*.txt`). Other file types will be treated as text files.
+
+#### HTML File Output
+
+When outputting to an HTML file, heading structure is used to organize each page title and URL. Note that the content of the current HTML file output is what would go in the body section of a full HTML file. That is, the current files do not include the head and body structure, nor do they include a DOCTYPE declaration.
+
+##### Heading Organization in HTML File Output
+
+The heading levels correspond to the following:
+1. Page title and URL. The URL is an active link to the page.
+2. Result of typo in alt text or missing/empty alt text.
+3. Image source attribute value. Plain text under this heading contains the full text of the img tag.
+
+#### Text File Output
+
 When outputting to a text file, tabs are used to indent each typo listed after its page title and URL. This output can be made into an ordered or unordered list in a Word document by:
 1. Copy the output from the text file into a Word document.
 2. Select all content (`ctrl+a`).
 3. Manually format as a list. It can be unordered (`alt h u` then select type) or ordered (`alt h n` then select type).
 
-#### Output List Organization
+##### List Organization in Text File Output
 
 Word preserves the indentation levels, resulting in a useful formatted list with the following characteristics:
 * Top-level list item: Link title and URL.
