@@ -36,7 +36,7 @@ def add_title(file: '_io.TextIOWrapper', ext: str, title: str, link: str) -> Non
     file.write(title_text)
 
 def add_typo_result(file: '_io.TextIOWrapper', ext: str, result: str) -> None:
-    """Add a typo result to the document. Format depends on file ext.
+    """Add typo information to the document. Format depends on file ext.
     @param File file: File to add to.
     @param str ext: File extension (.txt, .html, .htm).
     @param str result: Result of typos.
@@ -47,6 +47,20 @@ def add_typo_result(file: '_io.TextIOWrapper', ext: str, result: str) -> None:
     else:
         result_text = "\t" + result
     result_text += "\n"
+    file.write(result_text)
+
+def add_empty_missing_result(file: '_io.TextIOWrapper', ext: str, src: str, img: str) -> None:
+    """Add information on empty or missing alt text to the document. Format depends on file ext.
+    @param File file: File to add to.
+    @param str ext: File extension (.txt, .html, .htm).
+    @param str src: Value of img source attribute.
+    @param str img: Img tag as plain text.
+    @return: Nothing."""
+    result_text = ""
+    if is_html(ext):
+        result_text = "<h2>Empty or missing alt text!</h2>\n<h3>Image source link: " + src + "</h3>\n<code>" + str(img).replace("<", "&lt;").replace(">", "&gt;") + "</code>\n"
+    else:
+        result_text = "\t" + "Empty or missing alt text!\n\t\tImage source link: " + src + "\n\t\tImage tag: " + str(img) + "\n"
     file.write(result_text)
 
 def check_text(text : str) -> str:
@@ -97,7 +111,7 @@ def generate_list(file_name : str, ext: str, links : list, ignore_empty : bool):
                         add_typo_result(file, ext, result)
                 # If there is empty or missing alt text, note this issue in the file
                 if (alt == "" or (alt is None)) and not ignore_empty:
-                    file.write("\t" + "Empty or missing alt text!\n\t\tImage source link: " + src + "\n\t\tImage tag: " + str(img) + "\n")
+                    add_empty_missing_result(file, ext, src, str(img))
 
 def argparsing():
     """Parse command line arguments."""
