@@ -123,8 +123,8 @@ def argparsing():
     parser.add_argument('--ignore_empty', dest='ignore_empty', action='store_const',
                         const=1, default=0,
                         help='ignore empty alt text; do not record it in output file')
-    parser.add_argument("--output", type=str, default="output.txt",
-                        help="file to store output in; default output.txt")
+    parser.add_argument("--output", type=str, default="output.html",
+                        help="file to store output in; default output.html")
     parser.add_argument("--dict", type=str, default=None,
                         help="dictionary file of typos to ignore")
     return parser.parse_args()

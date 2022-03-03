@@ -63,7 +63,7 @@ positional arguments:
 optional arguments:
   -h, --help       show this help message and exit
   --ignore_empty   ignore empty alt text; do not record it in output file
-  --output OUTPUT  file to store output in; default output.txt
+  --output OUTPUT  file to store output in; default output.html
   --dict DICT      dictionary file of typos to ignore
 ```
 
